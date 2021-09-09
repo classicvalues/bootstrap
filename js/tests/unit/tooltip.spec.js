@@ -185,7 +185,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      expect(tooltip._config.title).toEqual('Another tooltip')
+      expect(tooltip._getTitle()).toEqual('Another tooltip')
     })
   })
 
@@ -851,7 +851,7 @@ describe('Tooltip', () => {
           }, 100)
 
           setTimeout(() => {
-            expect(insertedFunc).toHaveBeenCalledTimes(1)
+            expect(insertedFunc).toHaveBeenCalledTimes(2)
             resolve()
           }, 200)
         }, 0)
@@ -1169,6 +1169,7 @@ describe('Tooltip', () => {
       tooltip.setContent({ '.tooltip-inner': 'foo' })
 
       expect(tip()).not.toHaveClass('show')
+      tooltip.show()
       expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
     })
 
@@ -1232,6 +1233,7 @@ describe('Tooltip', () => {
       })
 
       tooltip.setContent({ '.tooltip': { 0: childContent, jquery: 'jQuery' } })
+      tooltip.show()
 
       expect(childContent.parentNode).toEqual(tooltip._getTipElement())
     })
