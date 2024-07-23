@@ -21,7 +21,7 @@ jobs:
       # allow calibreapp/image-actions to update PRs
       pull-requests: write
     steps:
-      - name: Clone repository
+      - name: Checkout Repo
         uses: actions/checkout@v4
         with:
           persist-credentials: false
